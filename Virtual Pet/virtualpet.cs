@@ -40,70 +40,85 @@ namespace Virtual_Pet
         }
 
 
-        //constructors
-
+        //constructor
+        public Virtual_Pet()//Gives stats to Pet
+        {
+            this.age = RandomStat();
+            this.hunger = RandomStat();
+            this.boredom = RandomStat();
+            this.energy = RandomStat();
+            this.mood = MoodChoice();
+            this.boon = BoonChoice();
+        }
          
 
 
 
 
         //methods
-        public void MoodChoice()// Chooses random mood for user's pet
+        public string MoodChoice()// Chooses random mood for user's pet
         {
             Random randnum = new Random();
             int moodChoice = randnum.Next(6);
             switch (moodChoice)
             {
                 case 1:
-                    this.mood = "Happy";
+                    mood = "Happy";
                     break;
                 case 2:
-                    this.mood = "Sad";
+                    mood = "Sad";
                     break;
                 case 3:
-                    this.mood = "Vindictive";
+                    mood = "Vindictive";
                     break;
                 case 4:
-                    this.mood = "Needy";
+                    mood = "Needy";
                     break;
                 case 5:
-                    this.mood = "Playful";
+                    mood = "Playful";
                     break;
             }
+            return mood;
         }
 
-        public void AgeChoice()// Chooses random age for user's pet
-        {
-            Random randnum = new Random();
-            this.age = randnum.Next(1, 20);
-        }
+        //public void AgeChoice()// Chooses random age for user's pet
+        //{
+        //    Random randnum = new Random();
+        //    this.age = randnum.Next(1, 20);
+        //}
 
-        public void BoonChoice()// Chooses random Boon
+        public string BoonChoice()// Chooses random Boon
         {
             Random randnum = new Random();
             int BoonNumber = randnum.Next(1, 4);
             switch(BoonNumber)
                 {
                 case 1:
-                    this.boon = ("Never Fatigued");
-                    this.energy = 100;
+                    boon = ("Never Fatigued");
+                    this.energy = 20;
                     break;
                 case 2:
-                    this.boon = ("Never Hungry");
+                    boon = ("Never Hungry");
                     this.hunger = 0;
                     break;
                 case 3:
-                    this.boon = ("Never Bored");
+                    boon = ("Never Bored");
                     this.boredom = 0;
                     break;
             }
+            return boon;
         }
 
+        //actions for the user to take
         public void Sleep()
         {
             if (boon != "Never Fatigued")
             {
                 this.energy += 2;
+            }
+            else
+            {
+                this.energy += 0;
             }
         }
 
@@ -111,6 +126,10 @@ namespace Virtual_Pet
         {   if (boon != "Never Hungry")
             {
                 this.hunger -= 2;
+            }
+            else
+            {
+                this.hunger += 0;
             }
         }
 
@@ -120,12 +139,39 @@ namespace Virtual_Pet
             {
                 this.boredom -= 2;
             }
+            else
+            {
+                this.boredom += 0;
+            }
         }
 
         public void Medecine()
         {
             this.health += 2;
         }
+
+        public int RandomStat()
+        {
+            Random rand = new Random();
+            int stat = rand.Next(21);
+            return stat;
+        }
+
+        //Displaying Stats Method
+
+        public void DisplayChangingStats()
+        {
+            Console.WriteLine("Energy: "+energy);
+            Console.WriteLine("Hunger: " + hunger);
+            Console.WriteLine("Boredom: " + boredom);
+            Console.WriteLine("Health: " + health);
+        }
+
+        public void DisplayStaticStats()
+        {
+            Console.WriteLine("Your pet is " + age + " years old. They are " + mood + " and " + boon);
+        }
+       
     }
 }
 
