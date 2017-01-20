@@ -22,21 +22,25 @@ namespace Virtual_Pet
         public int Hunger
         {
             get { return this.hunger; }
+            set { this.hunger = value; }
         }
 
         public int Boredom
         {
             get { return this.boredom; }
+            set { this.boredom = value; }
         }
 
         public int Health
         {
             get { return this.health; }
+            set { this.health = value; }
         }
 
         public int Energy
         {
             get { return this.energy; }
+            set { this.energy = value; }
         }
 
 
@@ -59,7 +63,7 @@ namespace Virtual_Pet
         public string MoodChoice()// Chooses random mood for user's pet
         {
             Random randnum = new Random();
-            int moodChoice = randnum.Next(6);
+            int moodChoice = randnum.Next(1,6);
             switch (moodChoice)
             {
                 case 1:
@@ -114,22 +118,34 @@ namespace Virtual_Pet
         {
             if (boon != "Never Fatigued")
             {
-                this.energy += 2;
+                this.energy -= 1;
+                this.hunger += 2;
+                this.boredom += 3;
+                this.health -= 1;
             }
             else
             {
                 this.energy += 0;
+                this.hunger += 2;
+                this.boredom += 3;
+                this.health -= 1;
             }
         }
 
         public void Feed()
         {   if (boon != "Never Hungry")
             {
-                this.hunger -= 2;
+                this.hunger += 2;
+                this.energy -= 1;
+                this.boredom += 3;
+                this.health -= 1;
             }
             else
             {
                 this.hunger += 0;
+                this.energy -= 1;
+                this.boredom += 3;
+                this.health -= 1;
             }
         }
 
@@ -137,17 +153,25 @@ namespace Virtual_Pet
         {
             if (boon != ("Never Bored"))
             {
-                this.boredom -= 2;
+                this.hunger += 2;
+                this.boredom += 3;
+                this.energy -= 1;
+                this.health -= 1;
             }
             else
             {
                 this.boredom += 0;
+                this.energy -= 1;
+                this.hunger += 2;
+                this.health -= 1;
+
             }
         }
 
         public void Medecine()
         {
             this.health += 2;
+            this.energy -= 1;
         }
 
         public int RandomStat()
@@ -169,7 +193,7 @@ namespace Virtual_Pet
 
         public void DisplayStaticStats()
         {
-            Console.WriteLine("Your pet is " + age + " years old. They are " + mood + " and " + boon);
+            Console.WriteLine("Your pet is " + age + " years old. They are " + mood + " and " + boon+".");
         }
        
     }
