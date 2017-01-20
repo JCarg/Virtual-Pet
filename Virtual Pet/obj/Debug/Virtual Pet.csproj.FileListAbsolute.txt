@@ -1,1 +1,6 @@
 c:\users\jcarg\documents\visual studio 2015\Projects\Virtual Pet\Virtual Pet\bin\Debug\Virtual Pet.exe.config
+c:\users\jcarg\documents\visual studio 2015\Projects\Virtual Pet\Virtual Pet\bin\Debug\Virtual Pet.exe
+c:\users\jcarg\documents\visual studio 2015\Projects\Virtual Pet\Virtual Pet\bin\Debug\Virtual Pet.pdb
+c:\users\jcarg\documents\visual studio 2015\Projects\Virtual Pet\Virtual Pet\obj\Debug\Virtual Pet.csprojResolveAssemblyReference.cache
+c:\users\jcarg\documents\visual studio 2015\Projects\Virtual Pet\Virtual Pet\obj\Debug\Virtual Pet.exe
+c:\users\jcarg\documents\visual studio 2015\Projects\Virtual Pet\Virtual Pet\obj\Debug\Virtual Pet.pdb

@@ -12,23 +12,31 @@ namespace Virtual_Pet
         private int age;
         private string mood;
         private string boon;
-        
+        private int hunger;
+        private int boredom;
+        private int health=20;
+        private int energy;
 
 
         //properties
-        public int Age
+        public int Hunger
         {
-            get { return this.age; }
+            get { return this.hunger; }
         }
 
-        public string Mood
+        public int Boredom
         {
-            get { return this.mood; }
+            get { return this.boredom; }
         }
 
-        public string Boon
+        public int Health
         {
-            get { return this.boon; }
+            get { return this.health; }
+        }
+
+        public int Energy
+        {
+            get { return this.energy; }
         }
 
 
@@ -40,7 +48,7 @@ namespace Virtual_Pet
 
 
         //methods
-        public void MoodChoice()
+        public void MoodChoice()// Chooses random mood for user's pet
         {
             Random randnum = new Random();
             int moodChoice = randnum.Next(6);
@@ -64,28 +72,60 @@ namespace Virtual_Pet
             }
         }
 
-        public void AgeChoice()
+        public void AgeChoice()// Chooses random age for user's pet
         {
             Random randnum = new Random();
             this.age = randnum.Next(1, 20);
         }
 
-        public void BoonChoice()
+        public void BoonChoice()// Chooses random Boon
         {
             Random randnum = new Random();
             int BoonNumber = randnum.Next(1, 4);
             switch(BoonNumber)
                 {
                 case 1:
-                    this.Boon("Never Fatigued");
+                    this.boon = ("Never Fatigued");
+                    this.energy = 100;
                     break;
                 case 2:
-                    Console.WriteLine()
-
+                    this.boon = ("Never Hungry");
+                    this.hunger = 0;
+                    break;
+                case 3:
+                    this.boon = ("Never Bored");
+                    this.boredom = 0;
+                    break;
             }
         }
 
+        public void Sleep()
+        {
+            if (boon != "Never Fatigued")
+            {
+                this.energy += 2;
+            }
+        }
 
+        public void Feed()
+        {   if (boon != "Never Hungry")
+            {
+                this.hunger -= 2;
+            }
+        }
+
+        public void Play()
+        {
+            if (boon != ("Never Bored"))
+            {
+                this.boredom -= 2;
+            }
+        }
+
+        public void Medecine()
+        {
+            this.health += 2;
+        }
     }
 }
 
