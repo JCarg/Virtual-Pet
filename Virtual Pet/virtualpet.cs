@@ -9,9 +9,9 @@ namespace Virtual_Pet
     class Virtual_Pet
     {
         //fields
-        private int age;
-        private string mood;
-        private string boon;
+        public int age;
+        public string mood;
+        public string boon;
         private int hunger;
         private int boredom;
         private int health=20;
@@ -42,6 +42,7 @@ namespace Virtual_Pet
             get { return this.energy; }
             set { this.energy = value; }
         }
+        
 
 
         //constructor
@@ -54,7 +55,7 @@ namespace Virtual_Pet
             this.mood = MoodChoice();
             this.boon = BoonChoice();
         }
-         
+
 
 
 
@@ -85,11 +86,6 @@ namespace Virtual_Pet
             return mood;
         }
 
-        //public void AgeChoice()// Chooses random age for user's pet
-        //{
-        //    Random randnum = new Random();
-        //    this.age = randnum.Next(1, 20);
-        //}
 
         public string BoonChoice()// Chooses random Boon
         {
@@ -116,62 +112,105 @@ namespace Virtual_Pet
         //actions for the user to take
         public void Sleep()
         {
-            if (boon != "Never Fatigued")
+            if (boon == "Never Fatigued")
             {
-                this.energy -= 1;
-                this.hunger += 2;
+                this.hunger += 5;
+                this.energy = 20;
+                this.boredom += 1;
+                this.health -= 1;
+            }
+            else if (boon == "Never Hungry")
+            {
+                this.hunger = 0;
+                this.energy += 10;
                 this.boredom += 3;
                 this.health -= 1;
             }
-            else
+            else if (boon == "Never Bored")
             {
-                this.energy += 0;
-                this.hunger += 2;
-                this.boredom += 3;
+                this.hunger += 5;
+                this.energy += 10;
+                this.boredom = 0;
                 this.health -= 1;
             }
-        }
 
-        public void Feed()
-        {   if (boon != "Never Hungry")
-            {
-                this.hunger += 2;
-                this.energy -= 1;
-                this.boredom += 3;
-                this.health -= 1;
-            }
-            else
-            {
-                this.hunger += 0;
-                this.energy -= 1;
-                this.boredom += 3;
-                this.health -= 1;
-            }
+
         }
+         
+        public void Feed()
+        {   if (boon == "Never Hungry")
+            {
+                this.hunger = 0;
+                this.energy -= 1;
+                this.boredom += 3;
+                this.health -= 1;
+            }
+            else if(boon == "Never Bored")
+            {
+                this.hunger -= 2;
+                this.energy -= 1;
+                this.boredom = 0;
+                this.health -= 1;
+            }
+            else if(boon=="Never Fatigued")
+            {
+                this.hunger -= 2;
+                this.energy = 20;
+                this.boredom += 3;
+                this.health -= 1;
+            }
+    }
 
         public void Play()
         {
-            if (boon != ("Never Bored"))
+            if (boon == "Never Bored")
             {
-                this.hunger += 2;
-                this.boredom += 3;
-                this.energy -= 1;
-                this.health -= 1;
+                this.hunger += 5;
+                this.energy -= 4;
+                this.boredom = 0;
+                this.health += 1;
             }
-            else
+            else if (boon == "Never Hungry")
             {
-                this.boredom += 0;
-                this.energy -= 1;
-                this.hunger += 2;
-                this.health -= 1;
+                this.hunger = 0;
+                this.energy -= 4;
+                this.boredom -= 3;
+                this.health += 1;
+            }
+            else if (boon == "Never Fatigued")
+            {
+                this.hunger += 5;
+                this.energy = 20;
+                this.boredom -= 3;
+                this.health += 1;
+            }
 
-            }
+
         }
 
         public void Medecine()
         {
-            this.health += 2;
-            this.energy -= 1;
+            if (boon == "Never Fatigued")
+            {
+                this.hunger += 5;
+                this.energy = 20;
+                this.boredom += 2;
+                this.health += 3;
+            }
+            else if (boon == "Never Hungry")
+            {
+                this.hunger = 0;
+                this.energy -= 3;
+                this.boredom += 3;
+                this.health += 3;
+            }
+            else if (boon == "Never Bored")
+            {
+                this.hunger += 5;
+                this.energy -= 3;
+                this.boredom = 0;
+                this.health += 3;
+            }
         }
 
         public int RandomStat()
