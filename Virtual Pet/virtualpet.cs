@@ -229,11 +229,6 @@ namespace Virtual_Pet
             Console.WriteLine("Boredom: " + boredom);
             Console.WriteLine("Health: " + health);
         }
-
-        public void DisplayStaticStats()
-        {
-            Console.WriteLine("Your pet is " + age + " years old. They are " + mood + " and " + boon+".");
-        }
        
     }
 }
